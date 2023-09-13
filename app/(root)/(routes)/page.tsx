@@ -1,5 +1,4 @@
 import { SearchInput } from "@/components/search-input";
-import { UserButton } from "@clerk/nextjs";
 
 const RootPage = () => {
     return ( 
