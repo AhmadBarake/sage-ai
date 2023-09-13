@@ -6,17 +6,17 @@ async function main() {
     try {
         await db.category.createMany({
             data: [
-                {name: "Sales Sages"},
-                {name: "Marketing Sages"},
-                {name: "Accounting Sages"},
-                {name: "UI/UX Sages"},
-                {name: "Backend Dev Sages"},
-                {name: "Frontend Dev Sages"},
-                {name: "Infrastructure Sages"},
-                {name: "Cybersecurity Sages"},
-                {name: "Legal Sages"},
-                {name: "HR Sages"},
-                {name: "Other Sages"},
+                {name: "Sales"},
+                {name: "Marketing"},
+                {name: "Accounting"},
+                {name: "UI/UX"},
+                {name: "Backend"},
+                {name: "Frontend"},
+                {name: "Infrastructure"},
+                {name: "Cybersecurity"},
+                {name: "Legal"},
+                {name: "HR"},
+                {name: "Other"},
             ]
         })
     } catch (error) {
