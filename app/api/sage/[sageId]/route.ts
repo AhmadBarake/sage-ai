@@ -1,5 +1,5 @@
 import prismadb from "@/lib/prismadb";
-import { currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
 export async function PATCH(req: Request, 
@@ -40,5 +40,29 @@ export async function PATCH(req: Request,
     } catch(error) {
         console.log("[SAGE_PATCH]", error);
         return new NextResponse("Internal Error", {status: 500});
+    }
+}
+
+export async function DELETE(
+    req: Request, 
+    {params}: {params: {sageId: string}}
+) {
+    try{
+        const {userId} = auth();
+
+        if(!userId) {
+            return new NextResponse("Unauthorized", {status:401});
+        }
+        const sage = await prismadb.sage.delete({
+            where: {
+                userId,
+                id: params.sageId
+            }
+        });
+
+        return NextResponse.json(sage);
+    }catch(error){
+        console.log("SAGE_DELETE", error)
+        return new NextResponse("Internal Error", {status:500})
     }
 }
