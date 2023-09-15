@@ -1,5 +1,6 @@
 import prismadb from "@/lib/prismadb";
 import { SageForm } from "./components/sage-form";
+import { auth, redirectToSignIn } from "@clerk/nextjs";
 
 interface sageIdPageProps {
     params: {
@@ -10,11 +11,17 @@ interface sageIdPageProps {
 const sageIdPage = async ({
     params
 }: sageIdPageProps) => {
+    const { userId } = auth();
     //TODO: Check subscription
 
+
+    if (!userId) {
+        return redirectToSignIn();
+    }
     const sage = await prismadb.sage.findUnique({
         where: {
             id: params.sageId,
+            userId
         }
     })
 

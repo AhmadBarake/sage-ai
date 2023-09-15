@@ -24,6 +24,7 @@ export async function PATCH(req: Request,
         const sage = await prismadb.sage.update({
             where: {
                 id: params.sageId,
+                userId: user.id
             },
             data: {
                 categoryId,
