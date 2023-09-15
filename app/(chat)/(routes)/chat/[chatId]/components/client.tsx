@@ -55,14 +55,14 @@ export const ChatClient = ({
         handleSubmit(e);
       }
     return ( 
-        <div className="flex flex-col h-full p-4 space-y-2">
+        <div className="flex flex-col h-full p-4 min-h-screen space-y-2">
         <ChatHeader sage={sage} />
         <ChatMessages 
             sage={sage}
             isLoading={isLoading}
             messages={messages}  
             />
-
+            
             <ChatForm
             isLoading={isLoading}
             input={input}
