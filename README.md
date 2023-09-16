@@ -1,4 +1,3 @@
-`18d43fd6-8cf0-40af-9fad-7a99729e6473
 # Sage AI
 
 ## Description
