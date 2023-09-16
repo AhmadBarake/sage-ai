@@ -11,7 +11,7 @@ Every hero needs a sidekick! Sage AI is an intelligent assistant designed to hel
 ## Getting Started
 To get started with Sage AI, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/sage-ai.git`
+1. Clone the repository: `git clone https://github.com/AhmadBarake/sage-ai.git`
 2. Install the required dependencies: `npm install`
 3. Configure the necessary environment variables: 
    - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`: Key generated from CLERK
