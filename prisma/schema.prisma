@@ -1,3 +1,5 @@
+
+//TODO: setup MongoDB and check what changes are needed in the schema before deployment
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")

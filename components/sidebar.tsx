@@ -30,7 +30,7 @@ export const Sidebar = () => {
     ];
 
     const onNavigate = (url: string, pro:boolean) => {
-        // TODO check if pro 
+        // TODO check if subscrtiption is active in order to load a popup for users who have exceeded monthly free tier
         return router.push(url);
     }
     return (

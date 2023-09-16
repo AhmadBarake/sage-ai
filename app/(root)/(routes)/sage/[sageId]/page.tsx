@@ -12,7 +12,8 @@ const sageIdPage = async ({
     params
 }: sageIdPageProps) => {
     const { userId } = auth();
-    //TODO: Check subscription
+    
+    //TODO: Check subscription of the user, might add usuage limits for free tier users
 
 
     if (!userId) {

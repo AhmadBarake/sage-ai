@@ -4,51 +4,48 @@ import { redirect } from "next/navigation";
 import ChatClient from "./components/client";
 
 interface chatIdPageProps {
-    params: {
-        chatId: string;
-    }
+  params: {
+    chatId: string;
+  };
 }
 
-const ChatIdPage = async ({
-    params
-}: chatIdPageProps) => {
+const ChatIdPage = async ({ params }: chatIdPageProps) => {
+  const { userId } = auth();
 
-    const {userId} = auth();
+  if (!userId) {
+    return redirectToSignIn();
+  }
 
-    if(!userId) {
-        return redirectToSignIn();
-    }
-
-    const sage = await prismadb.sage.findUnique({
-        where: {
-            id: params.chatId
+  const sage = await prismadb.sage.findUnique({
+    where: {
+      id: params.chatId,
+    },
+    include: {
+      messages: {
+        orderBy: {
+          createdAt: "asc",
         },
-        include: {
-            messages: {
-                orderBy: {
-                    createdAt: "asc"
-                },
-                where: {
-                    userId,
-                }
-            },
-            _count: {
-                select: {
-                    messages: true
-                }
-            }
-        }
-    });
-    
-    if (!sage) {
-        return redirect('/');
-    }
+        where: {
+          userId,
+        },
+      },
+      _count: {
+        select: {
+          messages: true,
+        },
+      },
+    },
+  });
 
-    return (
-        <div >
-            <ChatClient sage={sage}/>
-        </div>
-    )
-}
+  if (!sage) {
+    return redirect("/");
+  }
+
+  return (
+    <div>
+      <ChatClient sage={sage} />
+    </div>
+  );
+};
 
 export default ChatIdPage;

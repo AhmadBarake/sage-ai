@@ -11,8 +11,9 @@ interface ImageUploadProps {
     disabled?:boolean;
 };
 
-// I'm bypassing cloudinary hydration errors by setting telling the component to mount only after server side rendering is done
+// I'm bypassing cloudinary hydration errors by telling the component to mount only after server side rendering is done
 // this is the useState / useEffect portion of this file
+
 //TODO: Replace Cloudinary image upload with my own AWS S3 Upload. 
 
 export const ImageUpload =({
