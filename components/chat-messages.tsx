@@ -30,8 +30,8 @@ export const ChatMessages = ({
     };
   }, []);
 
-  useEffect(()=> {
-    scrollRef?.current?.scrollIntoView({behavior:"smooth"});
+  useEffect(() => {
+    scrollRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages.length]);
 
   return (
@@ -50,15 +50,8 @@ export const ChatMessages = ({
           src={sage.src}
         />
       ))}
-      {isLoading && (
-        <ChatMessage 
-        role="system"
-        src={sage.src}
-        isLoading
-        />
-      )}
-    <div ref={scrollRef}/>
-
+      {isLoading && <ChatMessage role="system" src={sage.src} isLoading />}
+      <div ref={scrollRef} />
     </div>
   );
 };
