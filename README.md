@@ -4,6 +4,7 @@
 Every hero needs a sidekick! Sage AI is an intelligent assistant designed to help you with your daily tasks and make your life easier based on the context you specify.
 
 ## Features
+- Custom Sages: Sage AI allows you to create custom AI sages based on the context and seed conversations you define.
 - Intelligent task management: Sage AI can help you organize your tasks and prioritize them based on importance and deadlines [IN PROGRESS].
 - Personalized recommendations: Sage AI learns from your preferences and conversations and provides tailored recommendations and responses the more you use it.
 - Natural language processing: Communicate with Sage AI using natural language and receive accurate and relevant responses.
