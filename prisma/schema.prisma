@@ -1,9 +1,7 @@
-
 //TODO: setup MongoDB and check what changes are needed in the schema before deployment
 datasource db {
-  provider     = "mysql"
+  provider     = "mongodb"
   url          = env("DATABASE_URL")
-  relationMode = "prisma"
 }
 
 generator client {
@@ -12,26 +10,26 @@ generator client {
 }
 
 model Category {
-  id            String @id @default(uuid())
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
   name          String 
   sages         Sage[]
 }
 
 model Sage {
-  id           String @id @default(uuid())
+  id           String @id @default(auto()) @map("_id") @db.ObjectId
   userId       String
   userName     String 
   src          String
-  name         String @db.Text
+  name         String
   description  String
-  instructions String @db.Text
-  seed         String @db.Text
+  instructions String 
+  seed         String 
 
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
   category     Category @relation(fields: [categoryId], references: [id])
-  categoryId   String 
+  categoryId   String @db.ObjectId
 
   messages     Message[]
 
@@ -45,13 +43,13 @@ enum Role {
 }
 
 model Message {
-  id           String @id @default(uuid())
+  id           String @id @default(auto()) @map("_id") @db.ObjectId 
   role         Role
-  content      String @db.Text
+  content      String 
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  sageId       String
+  sageId       String @db.ObjectId
   userId       String
 
   sage         Sage @relation(fields: [sageId], references: [id], onDelete: Cascade) 
